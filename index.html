@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Quarterly Earnings - RevealJS</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h1>Quarterly Earnings — Interactive Report</h1>
+        <p>Contact: <strong>24f2001361@ds.study.iitm.ac.in</strong></p>
+      </section>
+
+      <section data-markdown>
+        <textarea data-template>
+## Executive Summary (Markdown)
+
+- Revenue up **8% QoQ**
+- Net margin improved due to cost optimization
+        </textarea>
+      </section>
+
+      <section>
+        <h2>Code sample</h2>
+        <pre><code class="language-python">print("Hello, Reveal!")</code></pre>
+      </section>
+
+      <section>
+        <h2>Formula</h2>
+        \[ \text{ROIC} = \frac{\text{NOPAT}}{\text{Invested Capital}} \]
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/markdown/markdown.esm.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.esm.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/math/math.esm.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.esm.js"></script>
+  <script>
+    Reveal.initialize({ plugins: [ RevealMarkdown, RevealHighlight, RevealMath, RevealNotes ] });
+  </script>
+</body>
+</html>
