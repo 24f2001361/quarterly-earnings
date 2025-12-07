@@ -1,17 +1,28 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Quarterly Earnings - RevealJS</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quarterly Earnings — RevealJS</title>
+
+  <!-- Core CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css" id="theme">
+
+  <style>
+    :root { --r-main-font-size: calc(0.6vw + 0.6vh + 0.6vmin); }
+    .reveal { font-size: var(--r-main-font-size); }
+    .chart { height: 360px; }
+  </style>
 </head>
 <body>
+
   <div class="reveal">
     <div class="slides">
       <section>
         <h1>Quarterly Earnings — Interactive Report</h1>
         <p>Contact: <strong>24f2001361@ds.study.iitm.ac.in</strong></p>
+        <aside class="notes">Intro notes shown in presenter view</aside>
       </section>
 
       <section data-markdown>
@@ -19,7 +30,7 @@
 ## Executive Summary (Markdown)
 
 - Revenue up **8% QoQ**
-- Net margin improved due to cost optimization
+- Margin improved due to cost program
         </textarea>
       </section>
 
@@ -35,13 +46,35 @@
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/markdown/markdown.esm.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.esm.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/math/math.esm.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.esm.js"></script>
-  <script>
-    Reveal.initialize({ plugins: [ RevealMarkdown, RevealHighlight, RevealMath, RevealNotes ] });
+  <!-- Use module imports (ESM) for Reveal + plugins -->
+  <script type="module">
+    import Reveal from "https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.esm.js";
+    import RevealMarkdown from "https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/markdown/markdown.esm.js";
+    import RevealHighlight from "https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.esm.js";
+    import RevealMath from "https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/math/math.esm.js";
+    import RevealNotes from "https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.esm.js";
+
+    // Initialize
+    const deck = new Reveal({
+      width: 1280,
+      height: 720,
+      margin: 0.06,
+      controls: true,
+      progress: true,
+      history: true,
+      transition: "slide",
+      plugins: [ RevealMarkdown, RevealHighlight, RevealMath, RevealNotes ],
+      math: { mathjax: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" }
+    });
+
+    deck.initialize();
+
+    // lazy-load iframes on slide change (optional)
+    deck.on('slidechanged', (event) => {
+      const iframes = event.currentSlide.querySelectorAll('iframe[data-src]');
+      iframes.forEach(iframe => { if(!iframe.src) iframe.src = iframe.dataset.src; });
+    });
   </script>
 </body>
 </html>
+
